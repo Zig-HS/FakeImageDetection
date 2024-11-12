@@ -1,2 +1,3 @@
 # FakeImageDetection
-Breaking Semantic Artifacts for Generalized AI-generated Image Detection
+This is the official code of Breaking Semantic Artifacts for Generalized AI-generated Image Detection.
+Coming Soon
