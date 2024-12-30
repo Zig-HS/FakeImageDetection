@@ -1,0 +1,56 @@
+{
+    "name": "default",
+    "gpu_ids": [0],
+    "seed": 42,
+    "root": "checkpoints",      // where to save the checkpoint
+    "is_train": true,           // whether training is enabled
+    "continue_train": false,    // whether continue training is enabled
+    "trainer": "1loss",         // whether CBR blocks are trained for denoising purposes (1loss for no and 2loss for yes)
+
+    "network": {
+        "name": "network_basic",
+        "n_channel": 64,
+        "n_cbr": 18,
+        "n_basicblock": 3,
+        "encoder_layers": 6,
+        "nhead": 8,
+        "dim_feedforward": 2048,
+        "dropout": 0.1,
+        "patch_size": 64,
+        "padding_size": 64
+    },
+
+    "datasets": {
+        "name": "diffusion",    // Enter the foleder name of your dataset
+        "num_workers": 16,
+        "batch_size": 32,
+        "num_samples": 96000,
+        "shuffle": true
+    },
+
+    "train": {
+
+        // Augument Parameters
+        "resize": false,        // whether the image is resized (true for resize and false for zero-pad)
+        "loadsize": 256,        // image will be resized or zero-padded to satisfy the minimum edge as the loadsize
+        "cropsize": 256,        // image will be center-cropped to "cropsize x cropsize"
+        "augument": true,
+        "jpg": false,           // whether JEPG compression and Gaussian Blur is used for augmentation
+        "sigma": 25,            // the intensity of noise added to the patch (when 2loss is used)
+
+        // Epoch Parameters
+        "niter":    100000,
+        "show_loss_freq":   400,
+        "save_latest_freq": 2000,
+        "save_epoch_freq":  3,
+        "early_stop_epoch": 3,
+
+        // Optimizer Parameters
+        "beta1": 0.9, // Adam momentum term
+        "C_learning_rate":  1e-4,
+        "D_lossfn_weight":  1.0,
+        "D_learing_rate":   1e-4,
+        "D_scheduler": [200000, 400000, 600000, 800000, 1000000],
+        "D_scheduler_gamma": 0.5
+    }
+}
