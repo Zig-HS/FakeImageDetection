@@ -32,19 +32,19 @@ You can set up the environment by following these steps:
 
     ```
     datasets
-    ├── train
+    └── train					
           ├── gan
-          │── dm
+          │── dm   	
           │     .
           │     .
-    │── val
+    └── val
           ├── gan
-          │── dm
+          │── dm   	
           │     .
           │     .
-    │── test
+    └── test
           ├── progan
-          │── cyclegan
+          │── cyclegan   	
           │     .
           │     .
     ```
